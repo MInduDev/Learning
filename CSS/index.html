@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CSS Selectors Task</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units, Box Model & Fonts</title>
+     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            width:100vw;
+            height:100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            width:50vw;              /* 25% left + 25% right spacing */
+            margin-left:25vw;
+            margin-right:25vw;
+            margin-top:10vh;         /* 10% top spacing */
+            margin-bottom:10vh;      /* 10% bottom spacing */
+            border:3px solid black;
+        }
+
+        .container img{
+            width:100%;
+            height:50vh;
+            display:block;
+        }
+
+        .btn{
+            width:100%;
+            height:10vh;
+            border:none;
+            cursor:pointer;
+            color:white;
+            font-size:2vw;
+            font-weight:bold;
+            font-family:Verdana, sans-serif;
+            background:linear-gradient(to right,
+                        #0f766e, #22c55e);
+        }
+
+        .btn:hover{
+            opacity:0.9;
+        }
+    </style>
 </head>
-<body style="background-color:#f4f6f9; border:3px solid #1e293b; padding:15px; font-family:Arial;">
+<body>
+    <div class="container">
+        <img src="/IMG/W2.jpeg " alt="Nature Image">
 
-    <h1 style="color:#ffffff; background-color:#2563eb; padding:10px;">
-        This is a h1 heading with head as a class.
-    </h1>
-
-    <h2 style="background-color:#dbeafe; color:#1e3a8a; padding:10px;">
-        This is a h2 heading with "head" as a class and "bglime" as an id.
-    </h2>
-
-    <h4 style="color:#7c3aed;">
-        This is a h4 heading with head as a class.
-    </h4>
-
-    <p style="color:#334155; font-size:20px;">
-        This is a p paragraph tag without any id or class styled using "p" element selector
-    </p>
-
-    <p style="color:#16a34a;">
-        This is a p paragraph tag with para as an id
-    </p>
-
-    <p style="color:#475569; font-size:20px;">
-        This is a p paragraph tag without any id or class styled using "p" element selector
-    </p>
-
-    <h2 style="color:#0f172a;">
-        Show this output without inline CSS nor using class or id for "a" tag.
-    </h2>
-
-    <ul>
-        <li>
-            <a href="https://www.upskillmafia.com" style="color:#2563eb;">
-                Click here to go to UpskillMafia
-            </a>
-        </li>
-
-        <li>
-            <a href="https://www.google.com" style="color:#dc2626;">
-                Click here to go to Google
-            </a>
-        </li>
-    </ul>
-
-    <ol>
-        <li style="color:#2563eb;">This is li tag without any id or class</li>
-        <li style="color:#16a34a;">This is li tag without any id or class and it is in green colour</li>
-        <li style="color:#dc2626;">This is li tag without any id or class and it is in red colour</li>
-        <li>This is li tag without any id or class</li>
-        <li>This is li tag without any id or class</li>
-    </ol>
-
+        <button class="btn">
+            Click Me
+        </button>
+    </div>
 </body>
 </html>
