@@ -58,8 +58,8 @@ body{
 /*
 Menu hidden by default
 
-The menu button and menu are siblings.
-When button gets focus,
+menu button and menu are siblings.
+jab button focus karta hai to,
 menu becomes visible using + selector.
 */
 
