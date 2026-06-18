@@ -36,5 +36,4 @@ In this task I learned how to create a mobile menu using the CSS :focus pseudo-c
 * How absolute positioning is used for menus
 
 ## Author
-
 Indu
