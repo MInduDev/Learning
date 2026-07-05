@@ -1,0 +1,83 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #f5f5f5;
+}
+
+.container{
+    width: 90%;
+    margin: 30px auto;
+}
+
+header{
+   display: flex;
+   justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.login-btn{
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background-color: #e8f0ff;
+    color: #2563eb;
+    cursor: pointer;
+}
+
+.search-section{
+    display:flex;
+    gap:15px;
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:25px;
+}
+
+.search-section input{
+    width:300px;
+    padding:12px;
+    border:none;
+    background:#f1f1f1;
+    border-radius:8px;
+    outline:none;
+}
+
+.search-section button{
+    padding:12px 30px;
+    border:none;
+    border-radius:8px;
+    background:#7c3aed;
+    color:white;
+    cursor:pointer;
+}
+
+.student-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 0 8px rgba(0,0,0,.1);
+}
+
+.card p{
+    margin:12px 0;
+    color:#444;
+}
+
+.no-data{
+    text-align:center;
+    font-size:20px;
+    color:red;
+    grid-column:1/-1;
+}
