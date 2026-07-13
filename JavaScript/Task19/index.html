@@ -4,146 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Booking App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-<!-- Navbar -->
     <nav>
+        <div class="logo">
+            <h2>Logo</h2>
+        </div>
 
-        <div class="logo"><h2>Logo</h2></div>
-
-        <ul class="nav-links">
+        <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Contact Us</a></li>
             <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
         </ul>
 
-        <div class="user-box">
-            <span class="username">Username</span>
-
-            <button class="logout-btn">
+        <div class="user">
+            <span>Username</span>
+            <button id="logoutBtn">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
         </div>
-
     </nav>
 
-    <!-- Main Container -->
-
     <div class="container">
+    <div class="left">
+    <div class="cart-box">
+        <h2>Added Items</h2>
 
-        <div class="left-section">
-            <div class="cart-box">
-                <h2>Added Items</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Service Name</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cartItems">
-                        <!-- JavaScript will add items here -->
-                    </tbody>
-                </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Services</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
 
-                
-                <!-- Empty Message -->
+            <tbody id="cartItems">
+            </tbody>
+        </table>
 
-                <div id="emptyCart">
-                    <img src="images/no-items.png" alt="No Items">
-                    <h3>No Items Added</h3>
-                    <p>Add items to the cart from the services bar</p>
-                </div>
-
-                
-                <!-- Total -->
-
-                <div class="total">
-                    <h3>Total Amount</h3>
-                    <h3 id="totalAmount">₹ 0</h3>
-                </div>
-            </div>
-
-
-            <!-- Booking Form -->
-
-            <div class="booking-box">
-                <h3>Book Now</h3>
-                <form id="bookingForm">
-                    <label>Full Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="John Doe">
-
-                    <label>Email ID</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="mail@gmail.com">
-
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="********">
-
-                    <button type="submit" id="bookBtn">Book Now</button>
-                </form>
-                <p id="message"></p>
-            </div>
+        <div class="emptyCart">
+           <i class="fa-regular fa-circle-info"></i>
+           <h3>No Items Added</h3>
+           <p>Add services from the right section.</p>
         </div>
 
-
-        <div class="right-section">
-
-            <h1>Browse Our Services</h1>
-
-            <p class="description">
-                Click on the Add to Cart button to add the services to your
-                cart or press Skip. </p>
-            
-            <hr>
-
-            <div class="service-card">
-                <img
-                    id="serviceImage"
-                    src="images/dry-cleaning.png"
-                    alt="Service">
-
-                <div class="service-info">
-                    <h2 id="serviceName">Dry Cleaning</h2>
-                    <h2 class="price" id="servicePrice">
-                        ₹200
-                    </h2>
-                </div>
-
-                <div class="buttons">
-                    <button id="skipBtn" class="skip-btn">
-                    Skip Item
-                    <i class="fa-regular fa-circle-xmark"></i>
-                    </button>
-
-                    <button id="addBtn" class="add-btn">
-                    Add Item
-                    <i class="fa-regular fa-circle-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <hr>
-
-            <p class="bottom-text">
-                <i class="fa-regular fa-circle-info"></i>
-                Add the items to the cart and book now
-            </p>
+        <div class="total-box">
+            <h3>Total Amount</h3>
+            <h3 id="total">₹0</h3>
         </div>
     </div>
 
-    <script src="script.js"></script>
+        <div class="booking-box">
+            <h2>Book Now</h2>
+            <form id="bookingForm">
+                <label for="name">FullName</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
 
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="Password">Password</label>
+                <input type="password" id="Password" placeholder="Enter Password" required>
+
+                <button type="submit">Book Now</button>
+            </form>
+
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <div class="right">
+        <h1>Browse Our Services</h1>
+        <p class="info">Choose your required service and add it to your cart. You can remove items anytime before booking.
+        </p>
+
+        <div id="serviceList" class="service-list">
+        </div>
+        
+        <div class="bottom-box">
+            <p>
+                <i class="fa-regular fa-circle-info"></i>
+                Add your favourite services to the cart and complete your booking.
+            </p>
+
+            <div class="bottom-buttons">
+                <button id="cartBtn">Add To Cart</button>
+                <button id="bookNowBtn">Book Now</button>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>   
 </body>
 </html>
