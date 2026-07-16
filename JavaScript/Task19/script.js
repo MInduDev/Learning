@@ -1,59 +1,59 @@
-// Services Array + Variables + Load Services
+// Services Data
 
 const services=[
     {
         id:1,
         name:"Dry Cleaning",
         price:200,
-        image:"images/dry-cleaning.jpg"
+        image:"images/dry-cleaning.png"
     },
     {
         id:2,
         name:"Leather & Suede Cleaning",
         price:150,
-        image:"images/leather-suede.jpg"
+        image:"images/leather-cleaning.png"
     },
     {
         id:3,
-        name:"ironing",
-        price:30,
-        image:"images/ironing.jpg"
+        name:"Ironing",
+        price:50,
+        image:"images/ironing.png"
     },
     {
         id:4,
         name:"Wedding Dress Cleaning",
-        price:30,
-        image:"images/wedding-dress.jpg"
+        price:500,
+        image:"images/wedding-cleaning.png"
     },
     {
         id:5,
-        name:"Was and Fold",
-        price:30,
+        name:"Wash and Fold",
+        price:300,
         image:"images/wash-fold.png"
     },
     {
         id:6,
         name:"Stain Removal",
-        price:30,
-        image:"images/stain-removal.jpg"
+        price:150,
+        image:"images/stain-removal.png"
     }
 ];
 
 let cart=[];
 
-const serviceList=document.getElementById("serviceList");
-const cartItems=document.getElementById("cartItems");
-const total=document.getElementById("total");
-const emptyCart=document.getElementById("emptyCart");
+const serviceContainer = document.getElementById("serviceList");
+const cartTable = document.getElementById("cartItems");
+const totalPrice = document.getElementById("total");
+const emptyCart = document.getElementById("emptyCart");
 
-const bookingForm=document.getElementById("bookingForm");
-const message=document.getElementById("message");
-const cartBtn=document.getElementById("cartBtn");
-const bookNowBtn=document.getElementById("bookNowBtn");
+const bookingForm = document.getElementById("bookingForm");
+const message = document.getElementById("message");
+const cartBtn = document.getElementById("cartBtn");
+const bookNowBtn = document.getElementById("bookNowBtn");
 
 function showServices(){
 
-serviceList.innerHTML="";
+serviceContainer.innerHTML="";
 
 for(let i=0;i<services.length;i++){
 
@@ -78,7 +78,7 @@ Add Item
 </div>
 `;
 
-serviceList.appendChild(card);
+serviceContainer.appendChild(card);
 
 }
 
@@ -90,7 +90,7 @@ let card=document.querySelectorAll(".service-card");
 
 for(let i=0;i<services.length;i++){
 
-if(services[i].id==id){
+if(services[i].id===id){
 card[i].style.display="none";
 break;
 }
@@ -99,25 +99,27 @@ break;
 
 }
 
-// Add Item + Remove Item + Update Cart
+// Add Item to Cart
 
 function addItem(id){
 
-for(let i=0;i<services.length;i++){
+     let service = services.find(item => item.id === id);
+     let alreadyAdded = cart.find(item => item.id === id);
+     if(alreadyAdded){
+        alert("Services already added.");
+        return;
+     }
 
-if(services[i].id==id){
+     if (service) {
+        cart.push(service);
 
-cart.push(services[i]);
-saveCart();
-updateCart();
-
-break;
+     }
+     
+     saveCart();
+     updateCart();
 
 }
 
-}
-
-}
 
 function removeItem(index){
 
@@ -130,7 +132,7 @@ updateCart();
 
 function updateCart(){
 
-cartItems.innerHTML="";
+cartTable.innerHTML="";
 
 let totalAmount=0;
 
@@ -161,16 +163,16 @@ row.innerHTML=`
 </td>
 `;
 
-cartItems.appendChild(row);
+cartTable.appendChild(row);
 
 }
 
-total.innerHTML="₹"+totalAmount;
+totalPrice.innerHTML="₹"+totalAmount;
 
 }
 
 
-// localStorage + Total + Page Loal
+// Load saved cart when when website opens.
 
 function saveCart(){
 
@@ -211,10 +213,8 @@ document.getElementById("name").focus();
 
 });
 
-showServices();
-loadCart();
 
-// Booking Form + Buttons + Final Initialization
+// Booking Form Event Listener
 
 bookingForm.addEventListener("submit",function(e){
 
