@@ -4,103 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Booking App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <nav>
+    
+    <!-- Navbar -->
+     <nav class="navbar">
         <div class="logo">
             <h2>Logo</h2>
         </div>
 
-        <ul>
+        <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
 
-        <div class="user">
-            <span>Username</span>
-            <button id="logoutBtn">
+        <div class="profile">
+            <span class="username">Username</span>
+            <button id="logoutBtn" title="Logout">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
         </div>
-    </nav>
+     </nav>
 
-    <div class="container">
-    <div class="left">
-    <div class="cart-box">
-        <h2>Added Items</h2>
+    <!--  -->
+     <main class="container">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>S. No.</th>
-                    <th>Services</th>
-                    <th>Price</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
+        <!-- Left Section -->
+         <section class="left-panel">
+            <div class="cart">
+                <h2>Added Items</h2>
 
-            <tbody id="cartItems">
-            </tbody>
-        </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Services</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="cartItems">
+                    </tbody>
+                </table>
 
-        <div id="emptyCart">
-           <i class="fa-regular fa-circle-info"></i>
-           <h3>No Items Added</h3>
-           <p>Add services from the right section.</p>
-        </div>
+                <div id="emptyCart" class="empty-cart">
+                    <i class="fa-regular fa-circle-info"></i>
+                    <h3>No Item Added</h3>
+                    <p>Add any service from the right side.</p>
+                </div>
 
-        <div class="total-box">
-            <h3>Total Amount</h3>
-            <h3 id="total">₹0</h3>
-        </div>
-    </div>
-
-        <div class="booking-box">
-            <h2>Book Now</h2>
-            <form id="bookingForm">
-                <label for="name">FullName</label>
-                <input type="text" id="name" placeholder="Enter your full name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" required>
-
-                <button type="submit">Book Now</button>
-            </form>
-
-            <p id="message"></p>
-        </div>
-    </div>
-
-    <div class="right">
-        <h1>Browse Our Services</h1>
-        <p class="info">Choose your required service and add it to your cart. You can remove items anytime before booking.
-        </p>
-
-        <div id="serviceList" class="service-list">
-        </div>
-        
-        <div class="bottom-box">
-            <p>
-                <i class="fa-regular fa-circle-info"></i>
-                Add your favourite services to the cart and complete your booking.
-            </p>
-
-            <div class="bottom-buttons">
-                <button id="cartBtn">Add To Cart</button>
-                <button id="bookNowBtn">Book Now</button>
+                <div class="total">
+                    <h3>Total</h3>
+                    <h3 id="totalPrice">₹0</h3>
+                </div>
             </div>
-            
-        </div>
-    </div>
-    </div>
 
-    <script src="script.js"></script>   
+            <!-- Booking Form -->
+             <div class="booking">
+                <h2>Book Service</h2>
+                <form id="bookingForm">
+                    <label for="name">Full Name</label>
+                    <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required>
+
+                    <label for="email">Email</label>
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+                    <label for="Password">Password</label>
+                    <input
+                    type="password"
+                    id="Password"
+                    placeholder="Enter your Password"
+                    required>
+
+                    <button type="submit" id="bookBtn">Book Now</button>
+                </form>
+                <p id="message"></p>
+             </div>
+         </section>
+
+         <!-- Right Section -->
+          <section class="right-panel">
+            <h1>Browse Our Services</h1>
+            <p class="description"> Select the services you want and add them to your cart before booking.</p>
+
+            <!-- Services -->
+             <div id="serviceList" class="services"></div>
+
+             <!-- Bottom -->
+              <div class="footer">
+                <p>
+                    <i class="fa-regular fa-circle-info"></i> Review your selected services before placing the booking.</p>
+                    <div class="action-buttons">
+                        <button id="cartBtn">View Cart</button>
+                        <button id="bookNowBtn">Go To Booking</button>
+                    </div>
+              </div>
+          </section>
+     </main>
+     <script src="script.js"></script>
 </body>
 </html>
