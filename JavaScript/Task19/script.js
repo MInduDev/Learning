@@ -10,7 +10,7 @@ const logoutBtn = document.getElementById("logout");
 const bookingForm = document.getElementById("bookingForm");
 const fullName = document.getElementById("fullName");
 const email = document.getElementById("email");
-const phone = document.getElementById("phone");
+const password = document.getElementById("password");
 const message = document.getElementById("message");
 
 const bookBtn = document.getElementById("bookBtn");
@@ -72,72 +72,65 @@ const services = [
 
 
 // Show Current Service
-function showServices(){
+function showCurrentService() {
 
     serviceContainer.innerHTML = "";
 
-    if(currentIndex >= services.length){
+    if (currentIndex >= services.length) {
 
-        serviceContainer.innerHTML = `
+        let message = "";
 
-        <div class="empty-service">
+        message += '<div class="empty-service">';
+        message += '<i class="fa-solid fa-circle-check"></i>';
+        message += '<h2>No More Services</h2>';
+        message += '<p>All available services have been viewed.</p>';
+        message += '</div>';
 
-            <i class="fa-solid fa-circle-check"></i>
-
-            <h2>No More Services</h2>
-
-            <p>All available services have been viewed.</p>
-
-        </div>
-
-        `;
+        serviceContainer.innerHTML = message;
 
         return;
     }
 
-    let service = services[currentIndex];
+   
+    let currentService = services[currentIndex];
 
-    let card = document.createElement("div");
-    card.className = "service-card";
+    let serviceCard  = document.createElement("div");
+    serviceCard .className = "service-card";
 
-    card.innerHTML = `
+    let html = "";
 
-        <img src="${service.image}" alt="${service.name}">
+    html += '<img src="' + currentService.image + '">';
+    html += '<h3>' + currentService.name + '</h3>';
+    html += '<h4>₹' + currentService.price + '</h4>';
 
-        <h3>${service.name}</h3>
+    html += '<div class="btn-box">';
 
-        <h4>₹${service.price.toFixed(2)}</h4>
+    html += '<button class="skip-btn">';
+    html += 'Skip Item';
+    html += '</button>';
 
-        <div class="btn-box">
+    html += '<button class="add-btn">';
+    html += 'Add Item';
+    html += '</button>';
 
-            <button class="skip-btn">
-                Skip Item
-            </button>
+    html += '</div>';
 
-            <button
-                class="add-btn"
-                data-id="${service.id}">
-                Add Item
-            </button>
+    serviceCard .innerHTML = html;
 
-        </div>
+    serviceContainer.appendChild(serviceCard );
 
-    `;
-
-    serviceContainer.appendChild(card);
-
-    const addButton = card.querySelector(".add-btn");
-    const skipButton = card.querySelector(".skip-btn");
+    const addButton = serviceCard .querySelector(".add-btn");
+    const skipButton = serviceCard .querySelector(".skip-btn");
 
 
-    addButton.addEventListener("click", function(){
+    addButton.addEventListener("click", function () {
 
-        addService(service);
+        addService(currentService);
 
     });
 
 
-    skipButton.addEventListener("click", function(){
+    skipButton.addEventListener("click", function () {
 
         skipService();
 
@@ -147,8 +140,7 @@ function showServices(){
 
 
 // Add Service
-function addService(service){
-
+function addService(service) {
     cartItems.push(service);
 
     showCart();
@@ -156,27 +148,26 @@ function addService(service){
 
     currentIndex++;
 
-    showServices();
+    showCurrentService();
 
 }
 
 
 // Skip Service
-function skipService(){
+function skipService() {
 
     currentIndex++;
 
-    showServices();
+    showCurrentService();
 
 }
 
 
 // Show Cart
-function showCart(){
-
+function showCart() {
     cartBody.innerHTML = "";
 
-    if(cartItems.length === 0){
+    if (cartItems.length === 0) {
 
         cartBody.appendChild(emptyRow);
 
@@ -184,39 +175,42 @@ function showCart(){
 
     }
 
-    cartItems.forEach(function(item,index){
-
+    for(let i =0; i< cartItems.length; i++)
+    {
         let row = document.createElement("tr");
 
-        row.innerHTML = `
+        let html = "";
 
-            <td>${index + 1}</td>
+        html += "<td>";
+        html += i + 1;
+        html += "</td>";
 
-            <td>${item.name}</td>
+        html += "<td>";
+        html += cartItems[i].name;
+        html += "</td>";
 
-            <td>₹${item.price.toFixed(2)}</td>
+        html += "<td>";
+        html += "₹" + cartItems[i].price;
+        html += "</td>";
 
-        `;
+        row.innerHTML = html;
 
         cartBody.appendChild(row);
-
-    });
+    }
 
 }
 
 
 // Update Total
-function updateTotal(){
-
+function updateTotal() {
     total = 0;
 
-    cartItems.forEach(function(item){
+    for(let i = 0; i< cartItems.length; i++)
+    {
+        total = total + cartItems[i].price;
+    }
 
-        total += item.price;
-
-    });
-
-    totalPrice.innerText = total.toFixed(2);
+    totalPrice.innerText = total;
 
     updateBookButton();
 
@@ -224,9 +218,9 @@ function updateTotal(){
 
 
 // Update Book Button State
-function updateBookButton(){
+function updateBookButton() {
 
-    if(cartItems.length === 0){
+    if (cartItems.length === 0) {
 
         bookBtn.disabled = true;
         message.style.color = "red";
@@ -243,11 +237,10 @@ function updateBookButton(){
 
 
 // Logout
-logoutBtn.addEventListener("click", function(){
-
+logoutBtn.addEventListener("click", function () {
     let logout = confirm("Are you sure you want to logout?");
 
-    if(logout){
+    if (logout) {
 
         alert("Logout Successful.");
 
@@ -259,16 +252,15 @@ logoutBtn.addEventListener("click", function(){
 
 
 // Booking Form
-bookingForm.addEventListener("submit", function(event){
-
+bookingForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     message.innerText = "";
     message.style.color = "red";
 
 
-    // Cart Validation
-    if(cartItems.length === 0){
+   // Check cart
+    if (cartItems.length === 0) {
 
         message.innerText = "Please add at least one service.";
         return;
@@ -276,77 +268,51 @@ bookingForm.addEventListener("submit", function(event){
     }
 
 
-    // Name Validation
-    if(fullName.value.trim() === ""){
-
+   // Check name
+    if (fullName.value === "") {
         message.innerText = "Please enter your full name.";
-
         fullName.focus();
-
         return;
-
     }
 
-
-    // Email Validation
-    if(email.value.trim() === ""){
-
+    //  Check email   
+    if (email.value === "") {
         message.innerText = "Please enter your email.";
-
         email.focus();
-
         return;
+    }
 
+    if(password.value === ""){
+        message.innerText = "please enter your password.";
+        password.focus;
+        return;
     }
 
 
-    // Phone Validation
-    if(phone.value.trim() === ""){
-
-        message.innerText = "Please enter your phone number.";
-
-        phone.focus();
-
-        return;
-
-    }
-
-
-    // Success
     message.style.color = "green";
-
     message.innerText = "Booking Successful!";
 
     alert("Your booking has been placed successfully.");
-
 
 
     // Reset Form
     bookingForm.reset();
 
 
-
     // Clear Cart
     cartItems = [];
-
     total = 0;
 
     showCart();
-
     updateTotal();
-
-
 
     // Restart Services
     currentIndex = 0;
-
-    showServices();
+    showCurrentService();
 
 });
 
 // Initial Load
 showCart();
-
 updateTotal();
-
-showServices();
+showCurrentService();
