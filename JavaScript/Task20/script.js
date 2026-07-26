@@ -13,10 +13,7 @@ const phone = document.getElementById("phone");
 const bookBtn = document.getElementById("bookBtn");
 const successMessage = document.getElementById("successMessage");
 
-let cart = [];
-
-
-
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 buttons.forEach(function(button){
@@ -71,6 +68,8 @@ buttons.forEach(function(button){
 });
 
 function updateCart() {
+
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     cartBody.innerHTML = "";
 
@@ -194,6 +193,7 @@ bookBtn.addEventListener("click", function () {
             // Optional: Clear cart
             cart = [];
             updateCart();
+            localStorage.removeItem("cart");
 
             // Reset all buttons
             document.querySelectorAll(".add-btn").forEach(btn => {
@@ -210,9 +210,7 @@ bookBtn.addEventListener("click", function () {
 });
 
 
-// ===========================
 // Mobile Menu
-// ===========================
 
 const menuBtn = document.querySelector(".menu-btn");
 
@@ -224,9 +222,7 @@ menuBtn.addEventListener("click", function () {
 
 });
 
-// ===========================
 // Hero Book Button
-// ===========================
 
 const heroBookBtn = document.querySelector(".book-btn");
 
@@ -242,9 +238,9 @@ heroBookBtn.addEventListener("click", function () {
 
 });
 
-// ===========================
+
+
 // Newsletter
-// ===========================
 
 const newsletterForm = document.getElementById("newsletterForm");
 
