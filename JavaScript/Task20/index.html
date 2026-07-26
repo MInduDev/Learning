@@ -16,10 +16,10 @@
         <h2 class="logo">Logo</h2>
 
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
+            <a href="#home">Home</a>
+            <a href="#booking">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact Us</a>
         </div>
 
         <button class="username-btn">Username</button>
@@ -29,10 +29,10 @@
             ☰
 
             <div class="mobile-menu">
-                <a href="#">Home</a>
-                <a href="#">Services</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
+                <a href="#home">Home</a>
+                <a href="#booking">Services</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
             </div>
 
         </button>
@@ -40,7 +40,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
 
         <div class="hero-content">
 
@@ -94,7 +94,7 @@
 
     <!-- Service Section  -->
 
-    <section class="services-section">
+    <section class="services-section" id="booking">
         <div class="services-content">
             <div class="services-list card">
                 <h2>Our Services</h2>
@@ -196,27 +196,150 @@
             <div class="quality-item ">
                 <i class="fa-solid fa-shirt"></i>
                 <h3>Premium Service</h3>
-                <p> Expert garment care that keeps your clothes fresh, clean, and looking like new </p>
+                <p>Professional laundry care with premium quality service.</p>
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-headset"></i>
                 <h3>Quick Support</h3>
-                <p> Dedicated support with fast responses for a smooth and hassle-free experience. </p>
+                <p>Friendly customer support is available whenever you need help.</p>
 
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-cart-flatbed"></i>
                 <h3>Hassle Free Delivery</h3>
-                <p> Convenient doorstep pickup and delivery, Always on time and stress-free. </p>
+                <p>Fast and reliable pickup and delivery at your doorstep.</p>
 
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
                 <h3>Affordable Prices</h3>
-                <p> Premium laundry services at transparent price without compromising on quality. </p>
+                <p>Quality laundry services at budget-friendly prices.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===========================
+     About Us
+=========================== -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-container">
+
+            <div class="about-text">
+
+                <h2>About Us</h2>
+
+                <p>
+                    We provide reliable laundry and dry cleaning services with
+                    doorstep pickup and delivery. Our experienced team ensures
+                    every garment is cleaned with care, helping customers save
+                    time while delivering fresh and spotless clothes.
+                </p>
+
+            </div>
+
+            <div class="about-cards">
+
+                <div class="about-card">
+
+                    <i class="fa-solid fa-shirt"></i>
+
+                    <h3>Premium Cleaning</h3>
+
+                    <p>We use high-quality cleaning methods to keep your clothes fresh and safe.</p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <h3>Fast Delivery</h3>
+
+                    <p>Doorstep pickup and delivery with quick turnaround for every order.</p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <i class="fa-solid fa-tags"></i>
+
+                    <h3>Affordable Prices</h3>
+
+                    <p>Professional laundry services at prices that fit every budget.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+     Contact Us
+=========================== -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-container">
+
+            <h2>Contact Us</h2>
+
+            <p class="contact-text">
+                Have any questions or need help with your laundry service?
+                Feel free to contact us. We are always happy to assist you.
+            </p>
+
+            <div class="contact-cards">
+
+                <div class="contact-card">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <h3>Address</h3>
+
+                    <p>Raipur, Chhattisgarh, India</p>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <h3>Phone</h3>
+
+                    <p>+91 98765 43210</p>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <h3>Email</h3>
+
+                    <p>support@laundry.com</p>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <h3>Working Hours</h3>
+
+                    <p>Mon - Sat<br>9:00 AM - 8:00 PM</p>
+
+                </div>
 
             </div>
 
@@ -229,14 +352,15 @@
     <section class="newsletter-section">
         <div class="newsletter-content">
             <div class="newsletter-text">
-                <h2>Subscribe to our newsletter.</h2>
+                <h2>Subscribe to our Newsletter</h2>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="text" id="newsletterName" placeholder="Full Name">
+                <input type="email" id="newsletterEmail" placeholder="Email Address">
+                <button type="submit"> Subscribe</button>
 
-            </div>
-            <div class="newsletter-form">
-                <input type="text" placeholder="Full name">
-                <input type="email" placeholder="Email">
-                <button>Subscribe</button>
-            </div>
+            </form>
+            <p id="newsletterMessage"></p>
         </div>
     </section>
 
@@ -280,190 +404,4 @@
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-
-    emailjs.init({
-        publicKey: "IcIGBPl8CCm4kflMR"
-    });
-
-    const buttons = document.querySelectorAll(".add-btn");
-    const cartBody = document.getElementById("cartBody");
-    const totalPrice = document.getElementById("totalPrice");
-    const emptyCart = document.getElementById("emptyCart");
-    const cartTable = document.getElementById("cart-table")
-    const fullName = document.getElementById("fullName");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("phone");
-    const bookBtn = document.getElementById("bookBtn");
-    const successMessage = document.getElementById("successMessage");
-
-    let cart = [];
-
-    buttons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const serviceItem = button.parentElement;
-
-            const serviceName = serviceItem.querySelector(".service-name").innerText;
-
-            const price = parseInt(button.dataset.price);
-
-            let index = -1;
-
-            for (let i = 0; i < cart.length; i++) {
-
-                if (cart[i].name === serviceName) {
-                    index = i;
-                    break;
-                }
-
-            }
-
-            if (index === -1) {
-
-                // Add Item
-                cart.push({
-                    name: serviceName,
-                    price: price
-                });
-
-                button.innerHTML =
-                    'Remove Item <i class="fa-solid fa-circle-minus"></i>';
-
-                button.classList.add("remove-btn");
-
-            } else {
-
-                // Remove Item
-                cart.splice(index, 1);
-
-                button.innerHTML =
-                    'Add Item <i class="fa-solid fa-circle-plus"></i>';
-
-                button.classList.remove("remove-btn");
-            }
-
-            updateCart();
-
-        });
-
-    });
-
-    function updateCart() {
-
-        cartBody.innerHTML = "";
-
-        let total = 0;
-
-        if (cart.length === 0) {
-
-            emptyCart.style.display = "block";
-            cartTable.style.display = "none";
-
-        } else {
-
-            emptyCart.style.display = "none";
-            cartTable.style.display = "block";
-
-        }
-
-        cart.forEach((item, index) => {
-
-            total += item.price;
-
-            cartBody.innerHTML += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${item.name}</td>
-                <td>₹${item.price}</td>
-            </tr>
-        `;
-        });
-
-        totalPrice.innerText = `₹${total}`;
-
-    }
-
-
-    bookBtn.addEventListener("click", function () {
-
-        // Validation
-        if (cart.length === 0) {
-            alert("Please add at least one service.");
-            return;
-        }
-
-        if (fullName.value.trim() === "") {
-            alert("Enter Full Name");
-            return;
-        }
-
-        if (email.value.trim() === "") {
-            alert("Enter Email");
-            return;
-        }
-
-        if (phone.value.trim() === "") {
-            alert("Enter Phone Number");
-            return;
-        }
-
-        // Convert cart into text
-        let services = "";
-
-        for (let i = 0; i < cart.length; i++) {
-            services += cart[i].name + " - ₹" + cart[i].price + "\n";
-        }
-
-        // Calculate total
-        let total = 0;
-
-        for (let i = 0; i < cart.length; i++) {
-            total += cart[i].price;
-        }
-
-        // Data for EmailJS
-        const params = {
-            name: fullName.value,
-            email: email.value,
-            phone: phone.value,
-            services: services,
-            amount: total
-        };
-
-        // Send Email
-        emailjs.send(
-            "service_hd5wcoc",
-            "template_nr902po",
-            params
-        )
-            .then(function () {
-
-                successMessage.innerHTML =
-                    "Thank you For Booking the Services.<br>We will get back to you soon!";
-
-                // Optional: Clear form
-                fullName.value = "";
-                email.value = "";
-                phone.value = "";
-
-                // Optional: Clear cart
-                cart = [];
-                updateCart();
-
-                // Reset all buttons
-                document.querySelectorAll(".add-btn").forEach(btn => {
-                    btn.innerHTML = 'Add Item <i class="fa-solid fa-circle-plus"></i>';
-                    btn.classList.remove("remove-btn");
-                });
-
-            })
-            .catch(function (error) {
-                alert("Failed to send email.");
-                console.log(error);
-            });
-
-    });
-
-</script>
+<script src="script.js"></script>
