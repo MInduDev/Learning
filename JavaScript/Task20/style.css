@@ -607,6 +607,13 @@ body {
     margin-top: 10px;
 }
 
+.error{
+    color:red;
+    font-size:14px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
 /* Tablet */
 
 @media (max-width:1024px) {
