@@ -180,10 +180,14 @@
                 <div class="book-now card">
                     <h3>Book Now</h3>
                     <input type="text" placeholder="Full Name" id="fullName">
+                    <p class="error" id="nameError"></p>
                     <input type="email" placeholder="Email ID" id="email">
+                    <p class="error" id="emailError"></p>
                     <input type="tel" placeholder="Phone Number" id="phone">
+                    <p class="error" id="phoneError"></p>
                     <button class="book-now-btn" id="bookBtn">Book now</button>
                     <p id="successMessage"></p>
+                    <p class="error" id="cartError"></p>
                 </div>
             </div>
         </div>
@@ -196,27 +200,27 @@
             <div class="quality-item ">
                 <i class="fa-solid fa-shirt"></i>
                 <h3>Premium Service</h3>
-                <p>Professional laundry care with premium quality service.</p>
+                <p>Expert garment care that keeps your clothes fresh, clean, and looking like new.</p>
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-headset"></i>
                 <h3>Quick Support</h3>
-                <p>Friendly customer support is available whenever you need help.</p>
+                <p>Dedicated support with fast responses for a smooth and hassle-free experience.</p>
 
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-cart-flatbed"></i>
                 <h3>Hassle Free Delivery</h3>
-                <p>Fast and reliable pickup and delivery at your doorstep.</p>
+                <p>Convenient doorstep pickup and delivery, always on time and stress-free.</p>
 
             </div>
 
             <div class="quality-item ">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
                 <h3>Affordable Prices</h3>
-                <p>Quality laundry services at budget-friendly prices.</p>
+                <p>Premium laundry services at transparent prices without compromising on quality.</p>
 
             </div>
 
@@ -356,7 +360,9 @@
             </div>
             <form class="newsletter-form" id="newsletterForm">
                 <input type="text" id="newsletterName" placeholder="Full Name">
+                 <p class="error" id="newsletterNameError"></p>
                 <input type="email" id="newsletterEmail" placeholder="Email Address">
+                <p class="error" id="newsletterEmailError"></p>
                 <button type="submit"> Subscribe</button>
 
             </form>
@@ -400,8 +406,9 @@
         </div>
     </footer>
 
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
