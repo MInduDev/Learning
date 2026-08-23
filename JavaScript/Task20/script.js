@@ -1,323 +1,483 @@
-// EmailJs Initialization
+let cart = [];
+let total = 0;
+
+let cartBody = document.getElementById("cartBody");
+let totalPrice = document.getElementById("totalPrice");
+let emptyCart = document.getElementById("emptyCart");
+
+let addButtons = document.querySelectorAll(".add-btn");
+
+let bookBtn = document.getElementById("bookBtn");
+let fullName = document.getElementById("fullName");
+let email = document.getElementById("email");
+let phone = document.getElementById("phone");
+
+let nameError = document.getElementById("nameError");
+let emailError = document.getElementById("emailError");
+let phoneError = document.getElementById("phoneError");
+let bookingList = document.getElementById("bookingList");
+let successMessage = document.getElementById("successMessage");
+let cartError = document.getElementById("cartError");
+
+//email send execution
+
 emailjs.init({
     publicKey: "IcIGBPl8CCm4kflMR"
 });
 
-// Variables
-let cartBody = document.getElementById("cartBody");
-let totalPrice = document.getElementById("totalPrice");
-let emptyCart = document.getElementById("emptyCart");
-let cartTable = document.getElementById("cart-table");
-let buttons = document.querySelectorAll(".add-btn");
 
-// Local Storage
-let cart = [];
-let savedCart = localStorage.getItem("cart");
-if (savedCart != null){
-    cart = JSON.parse(savedCart);
-}
+addButtons.forEach(function(button){
+    button.addEventListener("click", function(){
+        let price = button.getAttribute("data-price");
+        let service = button.parentElement.querySelector(".service-name");
 
-// Update Cart
-function updateCart(){
+        let item = {
+            name: service.textContent,
+            price: Number(price)
+        };
+
+        let alreadyAdded = cart.some(function(item){
+            return item.name === service.textContent;
+        });
+
+        if (alreadyAdded){
+            console.log("Service already added");
+
+            let itemIndex = cart.findIndex(function(cartItem){
+                return cartItem.name === service.textContent;
+            })
+
+            cart.splice(itemIndex, 1);
+
+            button.innerHTML = 'Add Item <i class="fa-solid fa-circle-plus"></i>';
+            button.classList.remove("remove-btn");
+        }
+        else
+            {
+                cart.push(item);
+                showCart();
+                console.log(cart);
+
+                button.innerHTML = 'Remove Item <i class="fa-solid fa-circle-minus"></i>';
+                button.classList.add("remove-btn");
+            }
+
+            showCart();
+    });
+});
+
+
+// Show Cart
+function showCart(){
     cartBody.innerHTML = "";
-    let total = 0;
-    if (cart.length == 0){
-        emptyCart.style.display = "block";
-        cartTable.style.display = "none";
-        localStorage.removeItem("cart");
-        
-    } 
-    
-    else {
+    total = 0;
+
+cart.forEach(function(item, index){
+    let row = document.createElement("tr");
+
+    let numberCell = document.createElement("td");
+    numberCell.textContent = index + 1;
+
+    let serviceCell = document.createElement("td");
+    serviceCell.textContent = item.name;
+
+    let priceCell = document.createElement("td");
+    priceCell.textContent = "₹" + item.price;
+
+    total = total + item.price;
+
+    row.appendChild(numberCell);
+    row.appendChild(serviceCell);
+    row.appendChild(priceCell);
+
+    // let removeCell = document.createElement("td");
+    // let removeButton = document.createElement("button");
+
+    // removeButton.textContent = "Remove";
+    // removeButton.classList.add("remove-btn");
+
+    // removeButton.addEventListener("click", function(){
+
+    //     let index = cart.findIndex(function(item){
+    //         return item.name === serviceCell.textContent;
+    //     });
+
+    //     if(index !== -1){
+    //         cart.splice(index, 1);
+    //         showCart();
+    //         console.log(cart);
+    //     }
+    // });
+
+    // removeCell.appendChild(removeButton);
+    // row.appendChild(removeCell);
+
+    cartBody.appendChild(row);
+});
+
+if(cart.length === 0){
+    emptyCart.style.display = "block";
+    document.getElementById("cart-table").style.display = "none";
+}
+else
+    {
         emptyCart.style.display = "none";
-        cartTable.style.display = "table";
-        localStorage.setItem("cart", JSON.stringify(cart));
+        document.getElementById("cart-table").style.display = "table";
     }
 
-    for (let i = 0; i < cart.length; i++){
-        let row = `
-            <tr>
-                <td>${i + 1}</td>
-                <td>${cart[i].name}</td>
-                <td>₹${cart[i].price}</td>
-            </tr>
+    totalPrice.textContent = "₹" + total;
+}    
+
+showCart();
+
+// Saved Booking
+let savedBooking = localStorage.getItem("booking");
+
+if(savedBooking){
+    savedBooking = JSON.parse(savedBooking);
+
+    if(!Array.isArray(savedBooking)){
+        savedBooking = [savedBooking];
+    }
+
+    console.log(savedBooking);
+}
+else
+{
+    savedBooking = [];
+}
+
+// show saved booking
+savedBooking.forEach(function(booking, index){
+    let bookingItem = document.createElement("div");
+
+    bookingItem.innerHTML = `
+        <h3>Booking ${index + 1}</h3>
+        <p>Name: ${booking.name}</p>
+        <p>Email: ${booking.email}</p>
+        <p>Phone: ${booking.phone}</p>
+        <p>Services:</p>
+        <ul>
+            ${booking.services.map(function(service){
+                return `<li>${service.name} - ₹${service.price}</li>`;
+            }).join("")}
+        </ul>
+        <p>Total: ₹${booking.total}</p>
+        <button class="delete-booking-btn">Delete Booking</button>
+    `;
+
+    bookingList.appendChild(bookingItem);
+
+    let deleteButton = bookingItem.querySelector(".delete-booking-btn");
+    deleteButton.addEventListener("click", function(){
+
+        let index = savedBooking.indexOf(booking);
+
+        if(index !== -1){
+            savedBooking.splice(index, 1);
+            localStorage.setItem("booking", JSON.stringify(savedBooking));
+            bookingItem.remove();
+        }
+
+        let bookingItems = bookingList.querySelectorAll("div");
+
+        bookingItems.forEach(function(item, newIndex){
+            item.querySelector("h3").textContent = "Booking" + (newIndex +1);
+        });
+    });
+});
+
+// Booking
+bookBtn.addEventListener("click", function(){
+
+    let name = fullName.value.trim();
+    let emailValue = email.value.trim();
+    let phoneValue = phone.value.trim();
+
+    if(cart.length === 0){
+        alert("Please add at least one service before booking");
+        return;
+    }
+
+    // Name
+    if (name === ""){
+        nameError.textContent = "Please enter your name";
+    }
+    else if (!/^[A-Za-z ]+$/.test(name)){
+        nameError.textContent = "Please enter a valid name";
+    }
+    else
+    {
+        nameError.textContent = "";
+    }
+
+    // Email
+    if (emailValue === ""){
+        emailError.textContent = "Please enter your email";
+    }
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)){
+        emailError.textContent = "Please enter a valid email";
+    }
+    else
+    {
+        emailError.textContent = "";
+    }
+
+    // Phone
+    if (phoneValue === ""){
+        phoneError.textContent = "Please enter your phone number";
+    }
+    else if (!/^[0-9]{10}$/.test(phoneValue)){
+        phoneError.textContent = "Please enter a valid 10-digit phone number";
+    }
+    else
+    {
+        phoneError.textContent = "";
+    }
+
+    // stop if any validation error
+    if (nameError.textContent !== "" ||
+        emailError.textContent !== "" ||
+        phoneError.textContent !== ""){
+            return;
+        }
+
+        // success msg
+        if (name !== "" && /^[A-Za-z ]+$/.test(name) &&
+    emailValue !== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue) &&
+    phoneValue !== "" && /^[0-9]{10}$/.test(phoneValue)){
+
+        let booking = {
+            name: name,
+            email: emailValue,
+            phone: phoneValue,
+            services: cart,
+            total: total
+        };
+
+        console.log(booking);
+
+        savedBooking.push(booking);
+        localStorage.setItem("booking", JSON.stringify(savedBooking));
+
+        // show new booking
+        let bookingItem = document.createElement("div");
+
+        bookingItem.innerHTML = `
+            <h3>Booking ${savedBooking.length}</h3>
+            <p>Name: ${booking.name}</p>
+            <p>Email: ${booking.email}</p>
+            <p>Phone: ${booking.phone}</p>
+            <p>Services:</p>
+            <ul>
+                ${booking.services.map(function(service){
+                    return `<li>${service.name} - ₹${service.price}</li>`;
+                }).join("")}
+            </ul>
+            <p>Total: ₹${booking.total}</p>
+            <button class="delete-booking-btn">Delete Booking</button>
         `;
 
-        cartBody.innerHTML += row;
-        total = total + cart[i].price;
+        bookingList.appendChild(bookingItem);
+
+        let servicesText = "";
+
+    for(let i = 0; i < booking.services.length; i++)
+    {
+        servicesText = servicesText + booking.services[i].name + 
+        " - Rs" + booking.services[i].price + "\n";
     }
 
-    totalPrice.innerHTML = "₹" + total;
-    
-}
-
-// Add Item / Remove Item
-for (let i = 0; i < buttons.length; i++){
-    buttons[i].addEventListener("click", function(){
-        let serviceItem = buttons[i].parentElement;
-        let serviceName = serviceItem.querySelector(".service-name").innerHTML;
-        let servicePrice = Number(buttons[i].dataset.price);
-        let found = false;
-        let position = -1;
-
-        for (let j = 0; j < cart.length; j++){
-            if (cart[j].name == serviceName){
-                found = true;
-                position = j;
-                break;
-            }
-    }
-
-    if (found == false){
-        let service = {
-            name: serviceName,
-            price: servicePrice
+    let emailData = {
+        name: booking.name,
+        email: booking.email,
+        phone: booking.phone,
+        services: servicesText,
+        amount: booking.total
     };
 
-    cart.push(service);
-            buttons[i].innerHTML =
-                'Remove Item <i class="fa-solid fa-circle-minus"></i>';
-            buttons[i].classList.add("remove-btn");
-
-        }
-
-        else {
-
-            cart.splice(position, 1);
-            buttons[i].innerHTML =
-                'Add Item <i class="fa-solid fa-circle-plus"></i>';
-
-            buttons[i].classList.remove("remove-btn");
-
-        }
-
-        updateCart();
-
-    });
-
-}
-
-// Page Load
-updateCart();
-
-for (let i = 0; i < buttons.length; i++){
-    let serviceItem = buttons[i].parentElement;
-    let serviceName = serviceItem.querySelector(".service-name").innerHTML;
-
-    for (let j = 0; j < cart.length; j++){
-        if (cart[j].name == serviceName){
-            buttons[i].innerHTML = 'Remove Item <i class="fa-solid fa-circle-minus"></i>';
-            buttons[i].classList.add("remove-btn");
-        }
-    }
-}
-
-// Booking Variables
-let fullName = document.getElementById("fullName");
-let email = document.getElementById("email");
-let phone = document.getElementById("phone");
-let bookBtn = document.getElementById("bookBtn");
-let successMsg = document.getElementById("successMessage");
-let nameError = document.getElementById("nameError");
-let emailError = document.getElementById("emailError");
-let phoneError = document.getElementById("phoneError");
-let cartError = document.getElementById("cartError");
-
-
-// Book Now Button
-bookBtn.addEventListener("click", function(){
-    
-    // clear old messages
-    nameError.innerHTML = "";
-    emailError.innerHTML = "";
-    phoneError.innerHTML = "";
-    cartError.innerHTML = "";
-    successMsg.innerHTML = "";
-
-    // Check Cart
-    if (cart.length == 0){
-        cartError.innerHTML = "Please add at least one service.";
-        return;
-    }
-    
-    // Check Name
-    if (fullName.value.trim() == ""){
-        nameError.innerHTML = "Enter Full Name.";
-        return;
-    }
-
-    // Check Email
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (email.value.trim() == "") {
-        emailError.innerHTML = "Enter Email Address.";
-        return;
-
-    }
-
-    if (emailPattern.test(email.value) == false) {
-        emailError.innerHTML = "Enter a valid Email Address.";
-        return;
-
-    }
-    
-    // Check Phone Number
-    let phonePattern = /^[0-9]{10}$/;
-
-    if (phone.value.trim() == "") {
-        phoneError.innerHTML = "Enter Phone Number.";
-        return;
-
-    }
-
-    if (phonePattern.test(phone.value) == false) {
-        phoneError.innerHTML = "Enter a valid 10-digit Phone Number.";
-        return;
-
-    }
-
-    // Create Service List
-    let serviceList = "";
-    for (let i = 0; i < cart.length; i++){
-        serviceList += cart[i].name + " - ₹" + cart[i].price + "\n";
-    }
-
-    // Calculate Total Amount
-    let total = 0;
-    
-    for (let i = 0; i < cart.length; i++){
-        total = total + cart[i].price;
-
-    }
-
-    // Email Data
-    let params = {
-        name: fullName.value,
-        email: email.value,
-        phone: phone.value,
-        services: serviceList,
-        amount: total
-    };
-
-    // Send Email
     emailjs.send(
        "service_hd5wcoc",
-        "template_nr902po",
-        params
-
+       "template_nr902po",
+        emailData
     )
 
-       .then(function(){
-        successMsg.innerHTML = "Thank you For Booking the Services.<br>We will get back to you soon!";
+    .then(function(){
+        alert("Booking Successfully!");
 
-        // Clear Input
         fullName.value = "";
         email.value = "";
         phone.value = "";
 
-        // Clear Cart
         cart = [];
         localStorage.removeItem("cart");
-        updateCart();
+        showCart();
 
-        // Reset All Buttons
-        for (let i = 0; i < buttons.length; i++){
-          buttons[i].innerHTML =
-                'Add Item <i class="fa-solid fa-circle-plus"></i>';
+        let allButtons = document.querySelectorAll(".add-btn");
 
-                buttons[i].classList.remove("remove-btn");
+        for(let i = 0; i< allButtons.length; i++)
+        {
+            allButtons[i].innerHTML = 'Add Item <i class="fa-solid fa-circle-plus"></i>';
+            allButtons[i].classList.remove("remove-btn");
+        }
+        
+    })
+    .catch(function(){
+        cartError.innerHTML = "Failed to send email."
+        console.log("Email send failed:", error);
+    })
 
+        // delete new booking
+        let deleteButton = bookingItem.querySelector(".delete-booking-btn");
+
+        deleteButton.addEventListener("click", function(){
+            let index = savedBooking.indexOf(booking);
+
+            if(index !== -1){
+                savedBooking.splice(index, 1);
+                localStorage.setItem("booking", JSON.stringify(savedBooking));
+                bookingItem.remove();
             }
 
-        })
+            let bookingItems = bookingList.querySelectorAll("div");
 
-        .catch(function(){
-            cartError.innerHTML = 
-            "Failed to send email. Please try again.";
+            bookingItems.forEach(function(item, newIndex){
+                item.querySelector("h3").textContent = "Booking" + (newIndex + 1);
+            });
         });
 
+       
+    }
 });
 
-// Mobile Menu
+// Booking input validation
+fullName.addEventListener("input", function(){
+    nameError.textContent = "";
+});
+
+email.addEventListener("input", function(){
+    emailError.textContent = "";
+});
+
+phone.addEventListener("input", function(){
+    phoneError.textContent = "";
+});
+
+// mobile menu
 let menuBtn = document.querySelector(".menu-btn");
 let mobileMenu = document.querySelector(".mobile-menu");
 
 menuBtn.addEventListener("click", function(){
     mobileMenu.classList.toggle("show");
-
 });
 
-// Hero Book Button
-let heroBookBtn = document.querySelector(".book-btn");
-heroBookBtn.addEventListener("click", function(){
+// Mobile menu links
+let mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-    let bookingSection = document.getElementById("booking");
-    bookingSection.scrollIntoView({
+mobileLinks.forEach(function(link){
+    link.addEventListener("click", function(){
+        mobileMenu.classList.remove("show");
+    });
+});
+
+// hero book button
+let heroBookButton = document.querySelector(".book-btn");
+
+heroBookButton.addEventListener("click", function(){
+    document.getElementById("booking").scrollIntoView({
         behavior: "smooth"
     });
 });
 
-// Newsletter variables
+
+// remove item buttons
+let removeButtons = document.querySelectorAll("service-item .remove-btn");
+
+removeButtons.forEach(function(button){
+    button.addEventListener("click", function(){
+        let service = button.parentElement.querySelector(".service-name");
+
+        let index = cart.findIndex(function(item){
+            return item.name === service.textContent;
+        });
+
+        if(index !== -1){
+            cart.splice(index, 1);
+            showCart();
+            console.log(cart);
+        }
+    });
+});
+
+// newsletter validation
 let newsletterForm = document.getElementById("newsletterForm");
 let newsletterName = document.getElementById("newsletterName");
 let newsletterEmail = document.getElementById("newsletterEmail");
-let newslettermsg = document.getElementById("newsletterMessage");
+
 let newsletterNameError = document.getElementById("newsletterNameError");
 let newsletterEmailError = document.getElementById("newsletterEmailError");
+let newsletterMessage = document.getElementById("newsletterMessage");
 
-
-// Newsletter Form
 newsletterForm.addEventListener("submit", function(event){
     event.preventDefault();
 
-    // Clear old message
-    newsletterNameError.innerHTML = "";
-    newsletterEmailError.innerHTML = "";
-    newslettermsg.innerHTML = "";
+    let newsletterNameValue = newsletterName.value.trim();
+    let newsletterEmailValue = newsletterEmail.value.trim();
 
-    // Check Name
-    if (newsletterName.value.trim() == ""){
-        newsletterNameError.innerHTML = "Enter Name.";
+    newsletterNameError.textContent = "";
+    newsletterEmailError.textContent = "";
+    newsletterMessage.textContent = "";
+
+    // newsletter name
+    if(newsletterNameValue === ""){
+        newsletterNameError.textContent = "Please enter your name";
+    }
+    else if(!/^[A-Za-z ]+$/.test(newsletterNameValue)){
+        newsletterNameError.textContent = "Please enter a valid name";
+    }
+
+    // newsletter email
+    if(newsletterEmailValue === ""){
+        newsletterEmailError.textContent = "Please enter your email";
+    }
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmailValue)){
+        newsletterEmailError.textContent = "Please enter a valid email";
+    }
+
+    // stop if any error
+    if(newsletterNameError.textContent !== "" ||
+       newsletterEmailError.textContent !== ""){
         return;
     }
 
-    // Check Email
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (newsletterEmail.value.trim() == ""){
-        newsletterEmailError.innerHTML = "Enter Email Address.";
-        return;
-    }
+    
 
-    if (emailPattern.test(newsletterEmail.value) == false){
-        newsletterEmailError.innerHTML = "Enter a valid Email Address.";
-        return;
-    }
-
-    // Create Data for Emailjs
-    let params = {
-        name: newsletterName.value,
-        email: newsletterEmail.value
+    let newsletterData = {
+        name: newsletterNameValue,
+        email: newsletterEmailValue
     };
 
-    // send email
     emailjs.send(
         "service_hd5wcoc",
         "template_18y778w",
-        params
+        newsletterData
     )
 
-       .then(function(){
-        newslettermsg.innerHTML = 
-        "Thank you for subscribing to our newsletter!";
-        newsletterForm.reset();
+    .then(function(){
+     // Newsletter Success
 
-       })
+    newsletterMessage.textContent = "Successfully subscribed!";
 
-       .catch(function(){
+    newsletterName.value = "";
+    newsletterEmail.value = "";
+    })
 
-        newslettermsg.innerHTML =
-        "Subscription failed. Please try again.";
-
-        });
-
+    .catch(function(){
+        newsletterMessage.textContent = "Subscription failed.";
+        console.log(error);
+    })
 });
+
+
+
+
