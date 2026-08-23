@@ -1,4 +1,4 @@
-# Task 20 -  Laundry Service Web Application
+# Task 20 - Laundry Service Web Application
 
 A responsive Laundry Service Web Application developed using HTML, CSS, and JavaScript. This project allows users to explore laundry services, add services to the cart, book appointments, and receive order confirmation emails using EmailJS.
 
@@ -90,6 +90,9 @@ Users need to enter:
 - Full Name
 - Email Address
 - Phone Number
+- Pickup Date
+- Pickup Time
+- Address
 
 Validation is applied for:
 
@@ -110,6 +113,9 @@ Booking email includes:
 - Email Address
 - Phone Number
 - Selected Services
+- Pickup Date
+- Pickup Time
+- Address
 - Total Amount
 
 After successful booking:
@@ -276,5 +282,3 @@ During this project I learned:
 - Admin dashboard
 - Dark mode
 - Order tracking
-
----
