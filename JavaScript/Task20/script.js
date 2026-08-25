@@ -89,29 +89,6 @@ cart.forEach(function(item, index){
     row.appendChild(numberCell);
     row.appendChild(serviceCell);
     row.appendChild(priceCell);
-
-    // let removeCell = document.createElement("td");
-    // let removeButton = document.createElement("button");
-
-    // removeButton.textContent = "Remove";
-    // removeButton.classList.add("remove-btn");
-
-    // removeButton.addEventListener("click", function(){
-
-    //     let index = cart.findIndex(function(item){
-    //         return item.name === serviceCell.textContent;
-    //     });
-
-    //     if(index !== -1){
-    //         cart.splice(index, 1);
-    //         showCart();
-    //         console.log(cart);
-    //     }
-    // });
-
-    // removeCell.appendChild(removeButton);
-    // row.appendChild(removeCell);
-
     cartBody.appendChild(row);
 });
 
