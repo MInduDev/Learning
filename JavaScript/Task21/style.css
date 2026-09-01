@@ -1,0 +1,1004 @@
+/* =========================================================
+   BASIC RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Lato", Arial, sans-serif;
+    color: #555;
+    background: #fff;
+
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+}
+
+
+/* Common container */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero {
+    min-height: 670px;
+
+    position: relative;
+
+    background-image: url("assets/Hero_img.png");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+}
+
+
+/* Dark layer over image */
+
+.dark-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.48);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: relative;
+    z-index: 2;
+
+    min-height: 150px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding-top: 20px;
+}
+
+
+/* Logo */
+
+.logo-link {
+    display: block;
+}
+
+
+.logo {
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Navigation */
+
+.nav-links {
+    list-style: none;
+
+    display: flex;
+
+    gap: 45px;
+
+    padding-top: 40px;
+}
+
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+
+.nav-links a:hover {
+    color: #e67e22;
+}
+
+
+/* Mobile menu is hidden on desktop */
+
+.menu-toggle,
+.menu-button {
+    display: none;
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 1;
+
+    padding-top: 105px;
+}
+
+
+.hero h1 {
+    color: white;
+
+    font-size: 42px;
+
+    line-height: 1.2;
+
+    font-weight: 300;
+
+    letter-spacing: 1px;
+}
+
+
+.hero h1 span {
+    display: inline-block;
+
+    margin-top: 8px;
+}
+
+
+/* Hero buttons */
+
+.hero-buttons {
+    margin-top: 28px;
+
+    display: flex;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   COMMON BUTTON
+   ========================================================= */
+
+.btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    padding: 13px 30px;
+
+    border-radius: 30px;
+
+    font-size: 17px;
+
+    transition: 0.2s;
+}
+
+
+/* Orange button */
+
+.btn-primary {
+    background: #e67e22;
+
+    color: white;
+
+    border: 2px solid #e67e22;
+}
+
+
+.btn-primary:hover {
+    background: #cf6d17;
+
+    border-color: #cf6d17;
+}
+
+
+/* Outline button */
+
+.btn-outline {
+    color: #e67e22;
+
+    border: 2px solid #e67e22;
+
+    background: transparent;
+}
+
+
+.btn-outline:hover {
+    background: #e67e22;
+
+    color: white;
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+   ========================================================= */
+
+.section {
+    padding: 75px 0;
+}
+
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+
+.section-title h2 {
+    font-size: 32px;
+
+    font-weight: 300;
+
+    color: #555;
+
+    letter-spacing: 1px;
+}
+
+
+/* Orange line below heading */
+
+.title-line {
+    width: 115px;
+
+    height: 3px;
+
+    background: #e67e22;
+
+    margin: 25px auto 0;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.how-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* Phone */
+
+.phone-area {
+    text-align: center;
+}
+
+
+.phone-image {
+    width: 280px;
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+
+/* Steps */
+
+.steps-area {
+    padding-top: 10px;
+}
+
+
+.step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+
+/* Number circle */
+
+.step-number {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    border: 3px solid #e67e22;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #e67e22;
+
+    font-size: 28px;
+}
+
+
+.step p {
+    font-size: 20px;
+
+    line-height: 1.35;
+}
+
+
+/* App store buttons */
+
+.app-buttons {
+    width: 380px;
+
+    max-width: 100%;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   CITY SECTION
+   ========================================================= */
+
+.city-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 35px;
+}
+
+
+.city-card img {
+    width: 100%;
+
+    height: 190px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.city-card h3 {
+    margin: 20px 0 12px;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    color: #555;
+}
+
+
+.city-card p {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.testimonials {
+    position: relative;
+
+    min-height: 600px;
+
+    padding: 75px 0;
+
+    background-image: url("assets/Feedback-BG_img.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    color: white;
+}
+
+
+.testimonial-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* White heading */
+
+.light-title h2 {
+    color: white;
+}
+
+
+/* Testimonials grid */
+
+.testimonial-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 45px;
+}
+
+
+.testimonial {
+    color: white;
+}
+
+
+/* Big quote symbol */
+
+.quote-mark {
+    font-size: 55px;
+
+    line-height: 0.7;
+
+    font-weight: bold;
+}
+
+
+.testimonial p {
+    font-size: 17px;
+
+    line-height: 1.55;
+
+    font-style: italic;
+
+    margin: 25px 0;
+}
+
+
+/* Person */
+
+.person {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-weight: bold;
+}
+
+
+.person img {
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+.pricing-section {
+    background: #f7f7f7;
+}
+
+
+.pricing-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 40px;
+}
+
+
+/* Card */
+
+.price-card {
+    background: white;
+
+    border-radius: 5px;
+
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+
+    text-align: center;
+
+    padding-bottom: 28px;
+}
+
+
+/* Premium card */
+
+.price-card.featured {
+    border-top: 4px solid #e67e22;
+}
+
+
+/* Top part of card */
+
+.price-top {
+    padding: 25px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.price-top h3 {
+    font-size: 21px;
+
+    font-weight: 400;
+}
+
+
+.price {
+    color: #e67e22;
+
+    font-size: 48px;
+
+    font-weight: 300;
+
+    margin: 15px 0 5px;
+}
+
+
+.price span {
+    font-size: 17px;
+
+    color: #777;
+}
+
+
+.price-top p {
+    font-size: 14px;
+}
+
+
+/* Feature list */
+
+.price-card ul {
+    list-style: none;
+
+    text-align: left;
+
+    padding: 20px 30px;
+
+    min-height: 175px;
+}
+
+
+.price-card li {
+    padding: 9px 0;
+
+    font-size: 17px;
+}
+
+
+.not-available {
+    color: #888;
+}
+
+
+.price-card .btn {
+    min-width: 150px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background: #222;
+
+    color: #aaa;
+
+    padding: 35px 0 20px;
+}
+
+
+.footer-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.footer-links,
+.social-links {
+    display: flex;
+
+    list-style: none;
+
+    gap: 25px;
+}
+
+
+.footer a {
+    color: #aaa;
+
+    text-decoration: none;
+}
+
+
+.footer a:hover {
+    color: white;
+}
+
+
+.social-links a {
+    font-size: 20px;
+}
+
+
+.copyright {
+    text-align: center;
+
+    margin-top: 35px;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   TABLET
+   1199px and below
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .container {
+        width: 92%;
+    }
+
+
+    /* Smaller navigation gap */
+
+    .nav-links {
+        gap: 25px;
+    }
+
+
+    /* Smaller hero heading */
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+
+    /*
+       Four city columns become two.
+    */
+
+    .city-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /*
+       Three pricing cards become two columns.
+    */
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /*
+       Testimonials also become two columns.
+    */
+
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .how-grid {
+        gap: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   390px and below
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .container {
+        width: 90%;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 650px;
+    }
+
+
+    /* Navbar */
+
+    .navbar {
+        min-height: 100px;
+
+        align-items: center;
+
+        padding-top: 15px;
+    }
+
+
+    .logo {
+        width: 90px;
+
+        height: 90px;
+    }
+
+
+    /* Show hamburger */
+
+    .menu-button {
+        display: block;
+
+        position: relative;
+
+        z-index: 3;
+
+        font-size: 32px;
+
+        color: white;
+
+        cursor: pointer;
+    }
+
+
+    /*
+       Mobile menu starts hidden.
+    */
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 100px;
+
+        right: 0;
+
+        width: 220px;
+
+        background: rgba(0, 0, 0, 0.95);
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 10px 0;
+    }
+
+
+    .nav-links li {
+        width: 100%;
+    }
+
+
+    .nav-links a {
+        display: block;
+
+        padding: 13px 20px;
+    }
+
+
+    /*
+       Checkbox checked = show navigation.
+    */
+
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+
+    /* Hero content */
+
+    .hero-content {
+        padding-top: 90px;
+    }
+
+
+    .hero h1 {
+        font-size: 29px;
+
+        line-height: 1.25;
+    }
+
+
+    /* Buttons become vertical */
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .btn {
+        font-size: 15px;
+
+        padding: 11px 23px;
+    }
+
+
+    /* General sections */
+
+    .section {
+        padding: 55px 0;
+    }
+
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+
+    .section-title h2 {
+        font-size: 25px;
+
+        line-height: 1.25;
+    }
+
+
+    /*
+       Everything becomes one column.
+    */
+
+    .how-grid,
+    .city-grid,
+    .testimonial-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .how-grid {
+        gap: 30px;
+    }
+
+
+    /* Smaller phone */
+
+    .phone-image {
+        width: 230px;
+    }
+
+
+    /* Steps */
+
+    .step {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .step-number {
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 22px;
+    }
+
+
+    .step p {
+        font-size: 17px;
+    }
+
+
+    /* App buttons */
+
+    .app-buttons {
+        width: 100%;
+    }
+
+
+    /* Cities */
+
+    .city-card img {
+        height: 180px;
+    }
+
+
+    /* Testimonials */
+
+    .testimonial-grid {
+        gap: 35px;
+    }
+
+
+    .testimonials {
+        min-height: auto;
+    }
+
+
+    /* Pricing */
+
+    .price-card {
+        width: 100%;
+    }
+
+
+    /* Footer */
+
+    .footer-top {
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .footer-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 330px) {
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+
+    .logo {
+        width: 75px;
+
+        height: 75px;
+    }
+
+}
