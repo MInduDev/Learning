@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OmniFood Demo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+    <!-- SECTION 1 : HEADER + HERO -->
+    <header class="hero" id="home">
+        <div class="dark-overlay"></div>
+
+        <!-- Navbar -->
+        <nav class="navbar container">
+            <a href="#home" class="logo-link">
+                <img src="assets/Logo_img.png"
+                     alt="OmniFood logo"
+                     class="logo">
+            </a>
+
+
+            <input type="checkbox"
+                   id="menu-toggle"
+                   class="menu-toggle">
+
+            <label for="menu-toggle"
+                   class="menu-button">
+                ☰
+            </label>
+
+
+            <!-- Navbar links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="#delivery">Food Delivery</a>
+                </li>
+
+                <li>
+                    <a href="#how-it-works">How It Works</a>
+                </li>
+
+                <li>
+                    <a href="#cities">Our Cities</a>
+                </li>
+
+                <li>
+                    <a href="#pricing">Sign-Up</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- Hero content -->
+        <div class="hero-content container">
+
+            <h1>
+                GOODBYE JUNK FOOD
+                <br>
+                <span>HELLO SUPER HEALTHY FOOD</span>
+            </h1>
+
+
+            <!-- Hero buttons -->
+            <div class="hero-buttons">
+
+                <a href="#pricing" class="btn btn-outline">
+                    I'm Hungry
+                </a>
+
+                <a href="#how-it-works" class="btn btn-outline">
+                    Show me more
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    
+    <main>
+    <!-- SECTION 2 : HOW IT WORKS -->
+        <section class="section how-section"
+                 id="how-it-works">
+            <div class="container">
+
+
+                <!-- Section heading -->
+                <div class="section-title">
+                    <h2>
+                        HOW IT WORKS
+                    </h2>
+                    <div class="title-line"></div>
+                </div>
+
+
+                <!-- Two column layout -->
+                <div class="how-grid">
+
+                    <!-- Left side -->
+                    <div class="phone-area">
+                        <img src="assets/Phone_img.png"
+                             alt="Food delivery application"
+                             class="phone-image">
+                    </div>
+
+
+                    <!-- Right side -->
+                    <div class="steps-area">
+
+
+                        <!-- Step 1 -->
+                        <div class="step">
+                            <div class="step-number">
+                                1
+                            </div>
+                            <p>
+                                Choose plan that fits best for your
+                                need and sign-up today
+                            </p>
+                        </div>
+
+
+                        <!-- Step 2 -->
+                        <div class="step">
+                            <div class="step-number">
+                                2
+                            </div>
+                            <p>
+                                Pay for the plan and download
+                                the app
+                            </p>
+                        </div>
+
+
+                        <!-- Step 3 -->
+                        <div class="step">
+                            <div class="step-number">
+                                3
+                            </div>
+                            <p>
+                                You are done start ordering!!
+                            </p>
+                        </div>
+
+
+                        <!-- App store buttons -->
+                        <img src="assets/App_store.png"
+                             alt="Google Play and App Store"
+                             class="app-buttons">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SECTION 3 : OUR CITIES -->
+
+        <section class="section cities-section"
+                 id="cities">
+            <div class="container">
+                <div class="section-title">
+
+                    <h2>
+                        WE'RE CURRENTLY IN THESE CITIES
+                    </h2>
+                    <div class="title-line"></div>
+                </div>
+
+
+                <!-- City grid -->
+                <div class="city-grid">
+                    <article class="city-card">
+                        <img src="assets/Lisbon_img.png"
+                             alt="Lisbon">
+                        <h3>
+                            LISBON
+                        </h3>
+                        <p>
+                            ♙ &nbsp; 1600+ Happy Eaters
+                        </p>
+                        <p>
+                            ★ &nbsp; 50+ Chefs
+                        </p>
+                        <p>
+                            ♥ &nbsp; @omnifood_li
+                        </p>
+                    </article>
+
+                    <!-- London -->
+                    <article class="city-card">
+                        <img src="assets/London_img.png"
+                             alt="London">
+                        <h3>
+                            LONDON
+                        </h3>
+                        <p>
+                            ♙ &nbsp; 1600+ Happy Eaters
+                        </p>
+                        <p>
+                            ★ &nbsp; 50+ Chefs
+                        </p>
+                        <p>
+                            ♥ &nbsp; @omnifood_ld
+                        </p>
+                    </article>
+
+
+                    <!-- Berlin -->
+                    <article class="city-card">
+                        <img src="assets/Berlin_img.png"
+                             alt="Berlin">
+                        <h3>
+                            BERLIN
+                        </h3>
+                        <p>
+                            ♙ &nbsp; 1400+ Happy Eaters
+                        </p>
+                        <p>
+                            ★ &nbsp; 70+ Chefs
+                        </p>
+                        <p>
+                            ♥ &nbsp; @omnifood_br
+                        </p>
+                    </article>
+
+
+                    <!-- San Francisco -->
+                    <article class="city-card">
+                        <img src="assets/San-Francisco_img.png"
+                             alt="San Francisco">
+                        <h3>
+                            SAN-FRANCISCO
+                        </h3>
+                        <p>
+                            ♙ &nbsp; 1800+ Happy Eaters
+                        </p>
+                        <p>
+                            ★ &nbsp; 50+ Chefs
+                        </p>
+                        <p>
+                            ♥ &nbsp; @omnifood_sf
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SECTION 4 : TESTIMONIALS -->
+        <section class="testimonials"
+                 id="delivery">
+            <!-- Dark overlay -->
+            <div class="dark-overlay"></div>
+            <div class="container testimonial-content">
+                <div class="section-title light-title">
+                    <h2>
+                        OUR CUSTOMER CAN'T LIVE WITHOUT US
+                    </h2>
+                    <div class="title-line"></div>
+                </div>
+
+
+                <!-- Three testimonials -->
+                <div class="testimonial-grid">
+                    <article class="testimonial">
+                        <div class="quote-mark">
+                            “
+                        </div>
+                        <p>
+                            OmniFood is just awesome!! I just
+                            launched a startup which leaves me
+                            with no time for cooking, so OmniFood
+                            is a life-saver.
+                        </p>
+
+
+                        <div class="person">
+                            <img src="assets/Avtar1.png"
+                                 alt="Customer avatar">
+
+                            <span>
+                                Alberto Duncan
+                            </span>
+                        </div>
+                    </article>
+
+
+                    <!-- Testimonial 2 -->
+                    <article class="testimonial">
+                        <div class="quote-mark">
+                            “
+                        </div>
+                        <p>
+                            Inexpensive, healthy and great-tasting
+                            meals delivered right to my home.
+                            My family are so in love!
+                        </p>
+
+
+                        <div class="person">
+                            <img src="assets/Avtar3.png"
+                                 alt="Customer avatar">
+
+                            <span>
+                                Joana Silva
+                            </span>
+                        </div>
+                    </article>
+
+
+                    <!-- Testimonial 3 -->
+                    <article class="testimonial">
+                        <div class="quote-mark">
+                            “
+                        </div>
+                        <p>
+                            I was looking for a quick and easy food
+                            delivery service. I tried a lot of them
+                            and ended up with OmniFood.
+                        </p>
+
+
+                        <div class="person">
+                            <img src="assets/Avtar2.png"
+                                 alt="Customer avatar">
+
+                            <span>
+                                Milton Chapman
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SECTION 5 : PRICING -->
+        <section class="section pricing-section"
+                 id="pricing">
+            <div class="container">
+
+
+                <div class="section-title">
+                    <h2>
+                        START EATING HEALTHY TODAY
+                    </h2>
+                    <div class="title-line"></div>
+                </div>
+
+
+                <!-- Pricing cards -->
+                <div class="pricing-grid">
+                    <article class="price-card featured">
+
+                        <div class="price-top">
+                            <h3>
+                                PREMIUM
+                            </h3>
+
+                            <div class="price">
+                                $399
+                                <span>
+                                    / month
+                                </span>
+                            </div>
+
+                            <p>
+                                That's only 13.90$ per meal
+                            </p>
+                        </div>
+
+
+                        <ul>
+                            <li> ✓ 1 meal everyday </li>
+                            <li> ✓ Order 24*7 </li>
+                            <li> ✓ Access to newest creations </li>
+                            <li> ✓ Free delivery </li>
+                        </ul>
+
+
+                        <a href="#"
+                           class="btn btn-outline">
+                            Sign up
+                        </a>
+                    </article>
+
+
+
+                    <!-- PRO -->
+                    <article class="price-card">
+
+                        <div class="price-top">
+
+                            <h3>
+                                PRO
+                            </h3>
+
+                            <div class="price">
+                                $199
+                                <span>
+                                    / month
+                                </span>
+                            </div>
+
+                            <p>
+                                That's only 10.90$ per meal
+                            </p>
+                        </div>
+
+
+                        <ul>
+                            <li> ✓ 1 meal in 10 </li>
+                            <li> ✓ Order 24*7 </li>
+                            <li> ✓ Access to newest creations</li>
+                            <li>✓ Free delivery </li>
+                        </ul>
+
+
+                        <a href="#"
+                           class="btn btn-outline">
+                            Sign up
+                        </a>
+                    </article>
+
+
+
+                    <!-- STARTER -->
+                    <article class="price-card">
+                        <div class="price-top">
+                            <h3>
+                                STARTER
+                            </h3>
+
+                            <div class="price">
+                                19$
+                                <span>
+                                    / meal
+                                </span>
+                            </div>
+
+                            <p>
+                                &nbsp;
+                            </p>
+                        </div>
+
+
+                        <ul>
+                            <li> ✓ 1 meal month </li>
+                            <li> ✓ Order 24*7 </li>
+                            <li class="not-available">
+                                × Access to newest creations
+                            </li>
+                            <li> ✓ Free delivery </li>
+                        </ul>
+
+                        <a href="#"
+                           class="btn btn-outline">
+                           Sign up
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- SECTION 6 : FOOTER -->
+    <footer class="footer">
+        <div class="container footer-top">
+
+
+            <!-- Footer links -->
+            <ul class="footer-links">
+
+                <li>
+                    <a href="#">
+                        About us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Press
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        IOS App
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Android App
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Social icons -->
+            <div class="social-links">
+
+                <a href="#">
+                    f
+                </a>
+
+                <a href="#">
+                    𝕏
+                </a>
+
+                <a href="#">
+                    G+
+                </a>
+
+                <a href="#">
+                    ◎
+                </a>
+            </div>
+        </div>
+
+
+        <p class="copyright">
+            Copyright © 2026 by OmniFood Demo.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
